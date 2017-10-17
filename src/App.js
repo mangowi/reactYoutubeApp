@@ -15,11 +15,17 @@ class App extends Component {
     this.state = {
       videos: [
 
-      ]
+      ],
+      selectedVideo : null
     };
 
     YoutubeSearch({key: YOU_API_KEY, term: 'Tanzania'}, (videos) => {
-    this.setState({videos}); //ES6 we can just write videos if the key and proprty are same name
+    this.setState({
+      
+      videos : videos,
+      selectedVideo: videos[0]
+    
+     }); //ES6 we can just write videos if the key and proprty are same name
     console.log(videos);
     });
 
@@ -36,8 +42,12 @@ class App extends Component {
         </header>
        
         <SearchBar />
-        <VideoDetail video={this.state.videos[0]} />
-        <VideoList videos={this.state.videos} />
+        <VideoDetail video={this.state.selectedVideo} />
+        <VideoList
+          onVideoSelect ={selectedVideo => 
+           {this.setState({selectedVideo})}
+          }
+         videos={this.state.videos} />
       </div>
     );
   }
