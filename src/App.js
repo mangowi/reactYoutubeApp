@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import _ from 'lodash';
 import logo from './if_youtube.svg';
 import './App.css';
 import SearchBar from './components/Search_Bar';
@@ -19,21 +20,25 @@ class App extends Component {
       selectedVideo : null
     };
 
-    YoutubeSearch({key: YOU_API_KEY, term: 'Tanzania'}, (videos) => {
-    this.setState({
-      
-      videos : videos,
-      selectedVideo: videos[0]
-    
-     }); //ES6 we can just write videos if the key and proprty are same name
-    console.log(videos);
-    });
+    this.videoSearchTerm('danielmangowi')
+  }
 
-
+  videoSearchTerm(term){
+        YoutubeSearch({key: YOU_API_KEY, term: term}, (videos) => {
+            this.setState({
+              
+              videos : videos,
+              selectedVideo: videos[0]
+            
+            }); //ES6 we can just write videos if the key and proprty are same name
+            console.log(videos);
+            });
   }
 
 
   render() {
+    const videoSearchTerm = _.debounce((term) => {this.videoSearchTerm(term)}, 300);
+
     return (
       <div className="App">
         <header className="App-header">
@@ -41,7 +46,7 @@ class App extends Component {
           <h1 className="App-title">Welcome to Yotube Search API App</h1>
         </header>
        
-        <SearchBar />
+        <SearchBar onSearchTermChange={term =>this.videoSearchTerm(term)} />
         <VideoDetail video={this.state.selectedVideo} />
         <VideoList
           onVideoSelect ={selectedVideo => 
