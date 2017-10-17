@@ -6,11 +6,26 @@ import YoutubeSearch from 'youtube-api-search';
 
 const YOU_API_KEY = 'AIzaSyBEnqKd9PRy8jx4HwcoE5NNtFADgRobyzw';
 
-YoutubeSearch({key: YOU_API_KEY, term: 'Tanzania'}, function(data){
-    console.log(data);
-});
+
 
 class App extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      videos: [
+
+      ]
+    };
+
+    YoutubeSearch({key: YOU_API_KEY, term: 'Tanzania'}, (videos) => {
+    this.setState({videos}); //ES6 we can just write videos if the key and proprty are same name
+    console.log(videos);
+    });
+
+
+  }
+
+
   render() {
     return (
       <div className="App">
