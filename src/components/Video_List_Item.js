@@ -1,9 +1,25 @@
 import React from 'react';
 
+const VideoListItem = ({video}) => {
+    //const video = props.video; I dentical clearning up code, as passing props
+    console.log(video);
+   
+   const imageURL = video.snippet.thumbnails.default.url;
 
-const VideoListItem = (props) => {
     return (
-   <li>Video </li>
+            <li className="list-group-item">
+                <div className="video-list media">
+                    <div className="media-left">
+                      <img className="media-object" src={imageURL} alt = {video.snippet.title} />
+                    </div>
+                    <div className="media-body">
+                      <div className="media-heading"> 
+                            {video.snippet.title}
+
+                      </div>
+                    </div>
+                </div>
+            </li>
     );
 }
 

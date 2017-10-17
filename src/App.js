@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import logo from './if_youtube.svg';
 import './App.css';
 import SearchBar from './components/Search_Bar';
 import YoutubeSearch from 'youtube-api-search';
