@@ -1,3 +1,14 @@
+
+This app allows users to search for Youtube Videos.
+ It has been built using ReactJS and Redux.
+
+Technologies JSX, Components
+I have use two different components, Functional and Class based components.
+What are they
+ Class - I used when want to get and track changes around
+ Func - Used to takin information and spread in JSX.
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
